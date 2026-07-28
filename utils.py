@@ -19,8 +19,8 @@ def load_data():
         st.error("Dataset files not found in workspace directory.")
         return pd.DataFrame()
     
-    df_test = pd.read_excel(TEST_DATA_PATH)
-    df_detail = pd.read_excel(DETAIL_DATA_PATH)
+    df_test = pd.read_excel("testwise_report_2025.xlsx")
+    df_detail = pd.read_excel("detail_report_2025.xlsx")
     
     # Merge datasets
     df = pd.merge(df_test, df_detail, on='form6_barcode', how='left').drop_duplicates()
