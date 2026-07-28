@@ -11,15 +11,16 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 detail_path = os.path.join(BASE_DIR, "detail_report_2025.xlsx")
 testwise_path = os.path.join(BASE_DIR, "testwise_report_2025.xlsx")
 
-detail_df = pd.read_excel(detail_path)
-testwise_df = pd.read_excel(testwise_path)
-# Streamlit Page Config
-st.set_page_config(
-    page_title="DTMS - Drug Testing Delay Predictor & Analytics",
-    page_icon="🧪",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
+st.write("Looking for:", detail_path)
+st.write("Looking for:", testwise_path)
+
+if os.path.exists(detail_path) and os.path.exists(testwise_path):
+    detail_df = pd.read_excel(detail_path)
+    testwise_df = pd.read_excel(testwise_path)
+    st.success("Files loaded successfully ✅")
+else:
+    st.error("Dataset files not found in workspace directory.")
+    st.write("Available files:", os.listdir(BASE_DIR))
 
 # Custom CSS for Modern Premium Aesthetic
 st.markdown("""
