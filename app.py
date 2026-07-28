@@ -4,7 +4,15 @@ import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 import utils
+import os
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+detail_path = os.path.join(BASE_DIR, "detail_report_2025.xlsx")
+testwise_path = os.path.join(BASE_DIR, "testwise_report_2025.xlsx")
+
+detail_df = pd.read_excel(detail_path)
+testwise_df = pd.read_excel(testwise_path)
 # Streamlit Page Config
 st.set_page_config(
     page_title="DTMS - Drug Testing Delay Predictor & Analytics",
