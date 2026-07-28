@@ -5,7 +5,18 @@ import plotly.express as px
 import plotly.graph_objects as go
 import utils
 import os
+import pandas as pd
+import os
+import streamlit as st
 
+file1 = "detail_report_2025.xlsx"
+file2 = "testwise_report_2025.xlsx"
+
+if not os.path.exists(file1) or not os.path.exists(file2):
+    st.error("Dataset files not found. Please check file names.")
+else:
+    df_orders = pd.read_excel(file1)
+    df_tests = pd.read_excel(file2)
 # Custom CSS for Modern Premium Aesthetic
 st.markdown("""
 <style>
