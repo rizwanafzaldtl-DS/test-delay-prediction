@@ -64,11 +64,8 @@ def load_data():
 @st.cache_resource
 def load_model_and_encoders(df):
     """Load model and build LabelEncoders fitted on dataset categories."""
-    if not os.path.exists(MODEL_PATH):
-        st.error(f"Model file '{MODEL_PATH}' not found.")
-        return None, {}
-        
-    model = joblib.load(MODEL_PATH)
+    model = joblib.load("dtms_model.pkl")
+encoders = {}
     
     encoders = {}
     for col in CATEGORICAL_COLS:
