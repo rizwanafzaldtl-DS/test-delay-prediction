@@ -8,16 +8,16 @@ import os
 import gdown
 import joblib
 
-# 👇 ADD THIS BLOCK HERE
 file_id = "1_wUiZKkdFg64Vt4jUEUc7sBOGvfW5L12"
+
 url = f"https://drive.google.com/uc?id={file_id}"
 
 if not os.path.exists("dtms_model.pkl"):
-    gdown.download(url, output="dtms_model.pkl", quiet=False)
+    gdown.download(url, output="dtms_model.pkl", quiet=False, fuzzy=True)
 
-# 👇 THEN your app continues
-df = utils.load_data()
-model, encoders = utils.load_model_and_encoders(df)
+# ✅ FORCE CHECK
+if not os.path.exists("dtms_model.pkl"):
+    raise FileNotFoundError("❌ Model download failed. Check Google Drive permissions.")
 
 # Custom CSS for Modern Premium Aesthetic
 st.markdown("""
