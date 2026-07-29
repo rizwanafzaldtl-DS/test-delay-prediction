@@ -11,6 +11,25 @@ import streamlit as st
 import gdown
 import os
 import joblib
+
+import streamlit as st
+import pandas as pd
+import utils
+
+# 👇 ADD THIS BLOCK HERE
+import gdown
+import os
+
+file_id = "1_wUiZKkdFg64Vt4jUEUc7sBOGvfW5L12"
+url = f"https://drive.google.com/uc?id={file_id}"
+
+if not os.path.exists("dtms_model.pkl"):
+    gdown.download(url, output="dtms_model.pkl", quiet=False)
+
+# 👇 THEN your app continues
+df = utils.load_data()
+model, encoders = utils.load_model_and_encoders(df)
+
 # Custom CSS for Modern Premium Aesthetic
 st.markdown("""
 <style>
